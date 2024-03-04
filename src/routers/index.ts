@@ -1,9 +1,6 @@
-import express, { Application, json } from "express";
-import { taskRouters } from "./task.routers";
-import helmet from "helmet";
+import { taskRouter } from "./tasks.router";
+import { categoryRouter } from "./category.router";
+import { sessionRouter } from "./session.router";
+import { userRouter } from "./users.router";
 
-export const app: Application = express();
-
-app.use(helmet());
-app.use(json());
-app.use("/tasks", taskRouters);
+export { taskRouter, categoryRouter, sessionRouter, userRouter};

@@ -1,8 +1,13 @@
-import z from 'zod';
+import {z} from "zod";
 
-export const categorySchema = z.object({
-   id: z.number().positive(),
-   name: z.string().min(1)
-});
 
-export const categorySchemaCreate = categorySchema.omit({ id: true });
+const categorySchema = z.object({
+    id: z.number().positive(),
+    name: z.string().min(1),
+    userId: z.number().positive()
+})
+
+const createCategorySchema = categorySchema.omit({ id: true, userId: true});
+
+
+export { categorySchema, createCategorySchema};

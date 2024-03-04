@@ -1,4 +1,5 @@
-import { handleErrors } from "./handleErros.midlewares";
+import { auth } from "./auth.middleware";
+import { handleErrors } from "./handleErrors.middleware";
 import { ensure } from "./ensure.middleware";
 
-export { handleErrors, ensure }
+export { auth, handleErrors, ensure}
