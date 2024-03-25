@@ -8,9 +8,10 @@
     "migrate:dev": "dotenv -e .env.develop -- npx prisma migrate dev",
     "test": "dotenv -e .env.test -- vitest",
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate dev",
-    "build": "npx tsc",
+    "build": "tsc",
     "start": "node dist/server.js",
-    "migrate:deploy": "npx prisma migrate deploy"
+    "migrate:prod": "npx prisma migrate dev"
+    
   },
   "keywords": [],
   "author": "",
