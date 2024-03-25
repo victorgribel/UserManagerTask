@@ -1,197 +1,41 @@
-# M5 - Entrega 1 - Gerenciamento de Tarefas API
+# User Task API.
 
-Está documentação servirá de base para entrega, todas as rotas deverão se comportar assim como está previsto na documentação abaixo:
+## Inicialização do projeto.
+- **_Npm version_**: v9.6.7
+- **_Node version_**: v20.3.1
+- **_Instalação de dependências_**: `npm i` | `npm install`
+- **_Variáveis de ambiente_**: Duplicar e renomear o arquivo `.env.example` para rodar em ambiente de `.env.test` e `.env.dev` e sobreescrever de acordo com as suas credenciais.
+- **_Migrações_**: Execute as migrações com os comandos: `npm run migrate:dev` e `npm run migrate:test`.
+- **_Rodar a aplicação_**: Comando para inicializar a aplicação: `npm run dev`
 
-### Criação de tarefa POST /tasks
 
-Padrão de corpo
+## Funcionalidades
 
-```json
-{
-    "title": "Lorem ipsum",
-    "content": "Lorem ipsum",
-    "categoryId?": 1,
-}
-```
+- **Autenticação de Usuários:** Permite que os usuários façam login na aplicação, fornecendo credenciais válidas.
+  
+- **Criação de Usuários:** Possibilita o registro de novos usuários na plataforma.
 
-Padrão de resposta  (STATUS: 201)
+- **Listagem de Usuários:** Permite visualizar todos os usuários cadastrados na aplicação.
 
-```json
-{
-    "id": 1,
-    "title": "Lorem ipsum",
-    "content": "Lorem ipsum",
-    "finished": false,
-    "categoryId": 1,
-}    
-```
 
-#### Possíveis erros:
+- **Exclusão de Usuários:** Permite que os usuários removam suas contas da aplicação.
 
-STATUS (404) - Categoria inválida
+- **Criação de Tarefas:** Permite que os usuários criem novas tarefas para realizar.
 
-```json
-{
-    "message": "Category not found"
-}
-```
+- **Listagem de Tarefas:** Permite visualizar todas as tarefas disponíveis na plataforma.
 
-STATUS (409) quando o corpo não é compatível com o padrão
+- **Atualização de Tarefas:** Permite que os usuários atualizem o status ou os detalhes das tarefas existentes.
 
-### Leitura de tarefas GET /tasks
+- **Exclusão de Tarefas:** Permite que os usuários removam tarefas da sua lista.
 
-Padrão de resposta  (STATUS: 200)
+- **Testes Integrados:** Possibilidade de testar a aplicação com testes integrados para garantir o funcionamento correto das funcionalidades.
 
-```json
-[
-    {
-        "id": 1,
-        "title": "Lorem ipsum",
-        "content": "Lorem ipsum",
-        "finished": false,
-        "category": {
-            "id": 1,
-            "name": "Estudo",
-        }
-    }  
-]  
-```
+- **Segurança:** Implementa medidas de segurança, como autenticação e autorização, para proteger os dados dos usuários e garantir o acesso seguro à aplicação.
 
-URL Search Params
+## Referências e Contato
 
-| Parâmetro | Exemplo de uso | Descrição |
-| ------ | ------ | ------ |
-| category | /tasks?category=estudo | Forneça o "id" da categoria para trazer somente tarefas da categoria determinada |
+- **Perfil Pessoal no GitHub:** [Victor Gribel](https://github.com/victorgribel?tab=repositories)
+- **E-mail de Contato:** victorlgribel@gmail.com
+- **LinkedIn:** [Victor Gribel](https://www.linkedin.com/in/victor-gribel-7b3866232/)
 
-#### Possíveis erros:
 
-STATUS (404) - Categoria inválida
-
-```json
-{
-    "message": "Category not found"
-}
-```
-
-### Leitura de individual GET /tasks/:1
-
-Padrão de resposta  (STATUS: 200)
-
-```json
-{
-    "id": 1,
-    "title": "Lorem ipsum",
-    "content": "Lorem ipsum",
-    "finished": false,
-    "category": {
-        "id": 1,
-        "name": "Estudo"
-    }
-}   
-```
-
-#### Possíveis erros:
-
-STATUS (404) - Tarefa inválida
-
-```json
-{
-    "message": "Task not found"
-}
-```
-
-### Atualizar tarefa PATCH /tasks/:id
-
-Padrão de corpo 
-
-```json
-{
-    "title?": "Lorem ipsum",
-    "content?": "Lorem ipsum",
-    "finished?": true,
-    "categoryId?": 1,
-}
-```
-
-Padrão de resposta (STATUS: 200)
-
-```json
-{
-    "id": 1,
-    "title": "Lorem ipsum",
-    "content": "Lorem ipsum",
-    "finished": true,
-    "categoryId": 1,
-}    
-```
-
-#### Possíveis erros:
-
-STATUS (404) - Tarefa inválida
-
-```json
-{
-    "message": "Task not found"
-}
-```
-
-STATUS (404) - Categoria inválida
-
-```json
-{
-    "message": "Category not found"
-}
-```
-
-STATUS (409) quando o corpo não é compatível com o padrão
-
-### Excluir tarefa PATCH /tasks/:id
-
-Está rota não tem um corpo de resposta (STATUS: 204)
-
-#### Possíveis erros:
-
-STATUS (404) - Tarefa inválida
-
-```json
-{
-    "message": "Task not found"
-}
-```
-
-### Criação de categoria POST /categories
-
-Padrão de corpo
-
-```json
-{
-    "name": "Example",
-}
-```
-
-Padrão de resposta (STATUS 201)
-
-```json
-{
-    "id": 1,
-    "name": "Example",
-}
-```
-
-#### Possíveis erros:
-
-STATUS (409) quando o corpo não é compatível com o padrão
-
-### Exclusão de categoria POST
-
-Está rota não tem um corpo de resposta (STATUS: 204)
-
-#### Possíveis erros:
-
-STATUS (404) - Categoria inválida
-
-```json
-{
-    "message": "Category not found"
-}
-```
