@@ -1,5 +1,4 @@
-# User Task API.
-
+# API de gerenciamento de tarefas com usuários autenticados
 ## Inicialização do projeto.
 - **_Npm version_**: v9.6.7
 - **_Node version_**: v20.3.1
